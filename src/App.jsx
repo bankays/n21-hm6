@@ -1,31 +1,3 @@
-// import axios from "axios";
-// import React, { useEffect, useState } from "react";
-// import "./App.css";
-// const App = () => {
-//   const [products, setProducts] = useState([]);
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const response = await axios("https://api.escuelajs.co/api/v1/products");
-//       setProducts(response.data);
-//     };
-//     fetchData();
-//   }, []);
-//   console.log(products);
-//   return (
-//     <div className="card2">
-//       {products.map((product) => (
-//         <div className="card" key={product.id}>
-//           {/* <p>{product.userId}</p> */}
-//           {/* <h5>{product.title}</h5> */}
-//           <p>{product.title}</p>
-//           <img src={product.images} alt="png" />
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default App;
 import "./App.css";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
