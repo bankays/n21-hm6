@@ -1,26 +1,21 @@
-import "./App.css";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { instance } from "./api";
-
 import Header from "./components/Header";
-import { Route, Routes } from "react-router-dom";
-import Page2 from "./components/Page2";
 
-function App() {
+export function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [loading, setLoading] = useState(true);
-  // const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [searchTitle, setSearchTitle] = useState("");
-
   useEffect(() => {
     const loadPosts = async () => {
       setLoading(true);
       const response = await instance.get(
-        "https://api.escuelajs.co/api/v1/products"
+        "https://jsonplaceholder.typicode.com/posts"
       );
       setPosts(response.data);
       setLoading(false);
@@ -28,7 +23,6 @@ function App() {
 
     loadPosts();
   }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -84,7 +78,14 @@ function App() {
               return value;
             }
           })
-          .map((item) => <h5 key={item.id}>{item.title}</h5>)
+          .map((item) => (
+            <div key={item.id}>
+              <img width={100} height={100} src={item.images[0]} alt="" />
+              <h2>{item.title}</h2>
+              <strong>${item.price}</strong>
+              <p>{item.category.name}</p>
+            </div>
+          ))
       )}
 
       <div className="c">
@@ -116,5 +117,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
