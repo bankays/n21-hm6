@@ -1,0 +1,16 @@
+.card {
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
+  padding-bottom: 20px;
+  overflow-y: scroll;
+  padding: 0px 10px 0px 10px;
+}
+.card2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  column-gap: 20px;
+  justify-content: center;
+  margin-top: 100px;
+}
