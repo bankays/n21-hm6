@@ -13,6 +13,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [loading, setLoading] = useState(true);
   // const [loading, setLoading] = useState(false);
+  // search
   const [posts, setPosts] = useState([]);
   const [searchTitle, setSearchTitle] = useState("");
 
@@ -28,6 +29,7 @@ function App() {
 
     loadPosts();
   }, []);
+  // search
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +65,7 @@ function App() {
   return (
     <div className="container">
       <Header />
-
+      {/* search */}
       <input
         className="ss"
         style={{ width: "30%", height: "25px" }}
@@ -71,22 +73,29 @@ function App() {
         placeholder="Search..."
         onChange={(e) => setSearchTitle(e.target.value)}
       />
-      {loading ? (
-        <h4>Loading ...</h4>
-      ) : (
-        posts
-          .filter((value) => {
-            if (searchTitle === "") {
-              return value;
-            } else if (
-              value.title.toLowerCase().includes(searchTitle.toLowerCase())
-            ) {
-              return value;
-            }
-          })
-          .map((item) => <h5 key={item.id}>{item.title}</h5>)
-      )}
-
+      <div className="searchcard">
+        {loading ? (
+          <h4>Loading ...</h4>
+        ) : (
+          posts
+            .filter((value) => {
+              if (searchTitle === "") {
+                return value;
+              } else if (
+                value.title.toLowerCase().includes(searchTitle.toLowerCase())
+              ) {
+                return value;
+              }
+            })
+            .map((item) => (
+              <div className="namee" key={item.id}>
+                <p className="p1">{item.title}</p>
+                <img width={100} height={100} src={item.images[0]} alt="" />
+              </div>
+            ))
+        )}
+      </div>
+      {/* search */}
       <div className="c">
         <select
           value={selectedCategory}
